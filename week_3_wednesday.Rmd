@@ -1,0 +1,62 @@
+---
+title: "Data Science"
+author: "Srivasan"
+date: "Saturday, May 20, 2017"
+output: slidy_presentation
+---
+
+## Measure of Dispersion
+
+### Quantile
+
+### Standard Deviation and Variance
+
+- The most common measures of dispersion for continuous data are the variance and standard deviation. Both describe how much the individual values in a data set vary from the mean or average value.
+
+- variance of Population is denoted by   and for sample is denoted by S
+
+-  ![variance of population](C:\Users\ajay\Desktop\Data Science Training\population variation.png)
+
+- Standard Deviation is denoted by ![](C:\Users\ajay\Desktop\Data Science Training\sd.png)
+
+-  Variance of Sample is denoted by 
+
+![variance of sample](C:\Users\ajay\Desktop\Data Science Training\sample variation.png)
+
+***
+- Degree of Freedom : Linear Algebra: degrees of freedom = dimensions - constraints
+                      Statistics: degrees of freedom = observations - coefficients
+
+- Co-efficaient of Variation : In general, for two variables measured with the same units (e.g., two groups of people both weighed in pounds), the group with the larger variance and standard deviation has more variability among their scores.However, the unit of measure
+affects the size of the variance: the same population weights, expressed in ounces
+rather than pounds, would have a larger variance and standard deviation.The
+coefficient of variation (CV), a measure of relative variability, gets around this
+difficulty and makes it possible to compare variability across variables measured
+in different units.
+
+## Descriptive Statistics
+
+Descriptive statistics is the term given to the analysis of data that helps describe, show or summarize data in a meaningful way such that, for example, patterns might emerge from the data. Descriptive statistics do not, however, allow us to make conclusions beyond the data we have analysed or reach conclusions regarding any hypotheses we might have made. They are simply a way to describe our data.
+
+
+### Standard Error
+
+- The standard error is an estimate of the variation of error in making a particular observation, i.e., it represents the gap between the measured value and the "true" value.
+
+- Normally, the standard error is estimated by using standard deviation divided by
+the square root of n; thus, as the sample size increases, the standard error generally
+decreases, as observations become more reliable.
+
+- Use the standard error of the mean to determine how precisely the mean of the sample estimates the population mean. Lower values of the standard error of the mean indicate more precise estimates of the population mean. Usually, a larger standard deviation will result in a larger standard error of the mean and a less precise estimate. A larger sample size will result in a smaller standard error of the mean and a more precise estimate.
+
+### Confidence Interval
+
+![](C:\Users\ajay\Desktop\Data Science Training\ci.png)
+
+x : Sample mean,
+y : Standard Error,
+z : 0.975 quantile of normal distribution
+
+## Inference Statistics
+
+### Hypothesis Testing
