@@ -1,0 +1,89 @@
+---
+title: "Data Science"
+author: "Srivasan"
+date: "Thursday, May 11, 2017"
+output: slidy_presentation
+---
+
+## Download R and Rstudio
+
+- https://cran.r-project.org/bin/windows/base/
+
+- https://www.rstudio.com/products/rstudio/download/
+
+
+## Installing packages
+
+- install.packages('ggplot2')
+
+
+## Importing Data in R
+Here 'as.is=T' is added to read dates as character which can later be converted to dates. Also please note the variable name with spaces has been converted to variable name with dots in 'R' after importing. R will also convert any special characters in variable name to dot (.) after importing.
+```{r,echo=FALSE}
+start <- read.csv('D:\\crowd_analytix_R\\crowdanalytix using R\\CAX_Startup_Data.csv',header = T)
+head(start)
+```
+***
+```{r,echo= FALSE}
+summary(start)
+```
+***
+```{r,echo=FALSE}
+str(start)
+```
+
+## We will be using the above data frame for cleaning and exploration
+
+- call library for visualizing the data.
+- library(ggplot2)
+
+```{r,echo=FALSE}
+library(ggplot2)
+data(diamonds)
+head(diamonds)
+```
+
+***
+```{r,echo=FALSE}
+with(diamonds,qplot(carat,price,facets = cut~.))
+```
+
+***
+## Cleaning of Data Frame
+
+One of the prominent inconsistency is missing value are represented as "No Info" as well as
+"blanks". So, the first step should be to replace "No Info" and "blanks" with "NA" to get better sense of missing values in data.
+
+```{r,echo =FALSE}
+start[start=='No Info']<-NA
+start[start=='']<-NA
+summary(start)
+```
+
+***
+Next step would be to understand amount of missing values in data. Any variable missing
+more than 50% should not be used in modeling as it can give false impression of relationship
+with dependent and can pollute the model. Being on conservative side generally we prefer to
+keep variable with less than 40% missing value only for treatment and anything above 40%
+missing values are to be used in testing only to give additional insights.
+
+```{r,echo=FALSE}
+mis_val <- apply(start,2,function(x)sum(is.na(x)))
+percent_mis<-as.data.frame(round((mis_val/nrow(start))*100,1))
+name <-row.names(percent_mis)
+percent_mis_var<-cbind(name,percent_mis)
+row.names(percent_mis_var)<-NULL
+colnames(percent_mis_var)<-c("variable","percent_missing")
+head(percent_mis_var)
+```
+
+***
+# keeping only variables with less than 40% missing
+
+```{r}
+new_var<-percent_mis_var$variable[which(percent_mis_var$percent_missing<=40)]
+new_Start<-start[new_var]
+head(new_Start)
+other_data<-percent_mis_var$variable[which(percent_mis_var$percent_missing>40)]
+```
+
